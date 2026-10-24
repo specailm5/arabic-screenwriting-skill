@@ -36,105 +36,61 @@
 
 ---
 
-## 📂 بنية المهارة ومكوناتها
-
-<pre dir="rtl"><code>
-arabic-screenwriting-skill/
-│
-├── skills/arabic-screenwriting-skill/          # المهارة (تركيب Agent Skills القياسي)
-│   ├── SKILL.md                                # الدليل الأساسي: من الفكرة إلى التنسيق
-│   ├── references/                             # المراجع التفصيلية
-│   │   ├── structure.md                        # اللوجلاين، الملخص، المعالجة، الفصول
-│   │   ├── character.md                        # الرغبة، الحاجة، العائق، القوس
-│   │   ├── scene_dialogue.md                   # المشهد، الحوار، الصورة
-│   │   └── format_adaptation.md                # التنسيق، التكييف، الحقوق
-│   └── examples/                               # النماذج والتمارين
-│       ├── before_after_scene.md                # مشهد كامل قبل/بعد
-│       └── short_film_workshop.md               # ورشة فيلم قصير
-│
-├── docs/                                       # الموقع المرجعي (GitHub Pages)
-│
-├── .agents/skills/arabic-screenwriting-skill/  # مسار Codex و Antigravity
-│
-└── .claude/skills/arabic-screenwriting-skill/  # مسار Claude Code
-</code></pre>
-
----
-
-## 🚀 طرق التثبيت والاستخدام (Installation Guide)
-
-تُثبَّتُ المهارةُ إما في مشروعٍ بعينه (**محلياً**)، وإما **عامةً (Global)** لتعمل في كافة المشاريع.
-
----
-
-### أولاً: التثبيت بأمر واحد عبر `npx` (الطريقة الأسرع — موصى به)
+## 🚀 التثبيت
 
 ```bash
 npx skills add specailm5/arabic-screenwriting-skill -g -y
 ```
 
-ولاختيار بيئات بعينها أو التثبيت داخل مشروع محدد:
+<details>
+<summary>تثبيت يدوي، أو لبيئة واحدة فقط</summary>
+
+**لبيئات محددة:**
 
 ```bash
 npx skills add specailm5/arabic-screenwriting-skill -a claude-code -a codex
-npx skills add specailm5/arabic-screenwriting-skill --skill arabic-screenwriting-skill -g -y
 ```
 
----
-
-### ثانياً: التثبيت العام لبيئة Claude Code و Codex و Antigravity (يدوياً)
-
-#### لنظام Windows (PowerShell):
+**Windows (PowerShell):**
 
 ```powershell
-# مصدر المهارة داخل المستودع
 $src = "skills\arabic-screenwriting-skill"
 
-# 1. تثبيت لبيئة Claude Code
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude\skills\arabic-screenwriting-skill"
 Copy-Item -Recurse -Force "$src\*" "$env:USERPROFILE\.claude\skills\arabic-screenwriting-skill\"
 
-# 2. تثبيت لبيئة Codex و Agent Skills العامة
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.agents\skills\arabic-screenwriting-skill"
 Copy-Item -Recurse -Force "$src\*" "$env:USERPROFILE\.agents\skills\arabic-screenwriting-skill\"
 
-# 3. تثبيت لبيئة Google Antigravity / Gemini
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.gemini\config\skills\arabic-screenwriting-skill"
 Copy-Item -Recurse -Force "$src\*" "$env:USERPROFILE\.gemini\config\skills\arabic-screenwriting-skill\"
 ```
 
-#### لنظام macOS / Linux (Bash):
+**macOS / Linux:**
 
 ```bash
 src=skills/arabic-screenwriting-skill
 
-# 1. لبيئة Claude Code
 mkdir -p ~/.claude/skills/arabic-screenwriting-skill
 cp -r "$src/." ~/.claude/skills/arabic-screenwriting-skill/
 
-# 2. لبيئة Codex و Agent Harness
 mkdir -p ~/.agents/skills/arabic-screenwriting-skill
 cp -r "$src/." ~/.agents/skills/arabic-screenwriting-skill/
 
-# 3. لبيئة Antigravity / Gemini
 mkdir -p ~/.gemini/config/skills/arabic-screenwriting-skill
 cp -r "$src/." ~/.gemini/config/skills/arabic-screenwriting-skill/
 ```
 
----
-
-### ثالثاً: التثبيت المحلي داخل مشروع محدد (VS Code Workspace Harness)
+**داخل مشروع واحد (VS Code):**
 
 ```powershell
 New-Item -ItemType Directory -Force -Path ".agents\skills\arabic-screenwriting-skill"
 Copy-Item -Recurse -Force "path\to\skills\arabic-screenwriting-skill\*" ".agents\skills\arabic-screenwriting-skill\"
 ```
 
----
+**بدون بيئة برمجية:** انسخ محتوى [`skills/arabic-screenwriting-skill/SKILL.md`](skills/arabic-screenwriting-skill/SKILL.md) إلى التعليمات المخصصة أو System Prompt.
 
-### رابعاً: الاستخدام اليدوي (Direct System Prompt / Custom Instructions)
-
-* افتح ملف [`skills/arabic-screenwriting-skill/SKILL.md`](skills/arabic-screenwriting-skill/SKILL.md) وانسخ محتواه وضعه في خانة **التعليمات المخصصة (Custom Instructions)** أو **System Prompt**.
+</details>
 
 ---
 
@@ -287,27 +243,23 @@ Copy-Item -Recurse -Force "path\to\skills\arabic-screenwriting-skill\*" ".agents
 
 ---
 
-## ⚠️ حدود المسؤولية
-
-- المهارة **لبناء السيناريو وتحريره**، لا لنسخ سيناريوهات قائمة.
-- لا تختلق وقائع تاريخية في الأعمال المبنية على أحداث حقيقية.
-- لا تُشهّر بشخص حقيقي ولا تنسب إليه جريمة بلا بينة.
-- لا تُقدّم استشارة قانونية في الحقوق؛ راجع مختصاً قبل الإنتاج.
-- المستخدم مسؤول عن مراجعة النص النهائي وحقوق الاقتباس.
-
----
-
 ## 🤝 المساهمة
 
 نرحب بالمساهمات التي تحسّن المادة أو التحرير أو التوثيق. اقرأ [CONTRIBUTING.md](CONTRIBUTING.md) قبل فتح طلب سحب، والتزم بـ[قواعد السلوك](CODE_OF_CONDUCT.md).
+
+---
 
 ## 🛡️ الأمان
 
 إن وجدت مشكلة أمنية، فلا تفتح قضية عامة؛ راجع [SECURITY.md](SECURITY.md).
 
+---
+
 ## 📄 سجل التغييرات
 
 راجع [CHANGELOG.md](CHANGELOG.md) لمعرفة ما أُضيف في كل إصدار.
+
+---
 
 ## 📬 الدعم
 
@@ -318,3 +270,4 @@ Copy-Item -Recurse -Force "path\to\skills\arabic-screenwriting-skill\*" ".agents
 ## 📜 الترخيص (License)
 
 هذه المهارة مفتوحة المصدر تحت رخصة [MIT](LICENSE)، ومتاحة للاستخدام الشخصي والتجاري والبحثي لدعم اللغة العربية.
+
